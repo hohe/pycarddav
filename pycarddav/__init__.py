@@ -199,7 +199,7 @@ class ConfigurationParser(object):
         # Build parsers and set common options.
         self._conf_parser = ConfigParser.SafeConfigParser()
         self._arg_parser = argparse.ArgumentParser(
-            description=desc, version=__version__)
+            description=desc)
 
         self._arg_parser.add_argument(
             "-c", "--config", action="store", dest="cmd__inifile",
@@ -207,6 +207,8 @@ class ConfigurationParser(object):
             help="an alternate configuration file")
         self._arg_parser.add_argument(
             "--debug", action="store_true", dest="debug", help="enables debugging")
+        self._arg_parser.add_argument(
+            "--version", action='version', version=__version__)
 
     def set_mandatory_options(self, options):
         self._mandatory = options
